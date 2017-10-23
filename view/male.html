@@ -1,0 +1,129 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<mate name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="/static/css/reset.css">
+		<style>
+			body,html{
+				font-size: 12px;
+			}
+			.container-scroll{
+				position: relative;
+				height: 100%;
+				overflow-y: scroll;
+			}
+			.header{
+				padding-left: 20px;
+				border-bottom:1px solid #eee;
+				font:16px/40px a;
+				border-left: 5px solid #f00;
+			}
+			.book{
+				padding: 13px 15px;
+				position: relative;
+				overflow: hidden;
+				border-bottom:1px solid #eee;
+				font-size: 18px;
+			}
+			.cover{
+				float: left;
+				top: 0;
+				left: 0;
+				width: 8.5rem;
+				height: 11.3rem;
+				background: #ccc;
+				border:1px solid #f0f0f0;
+				overflow: hidden;
+				margin-right: 10px;
+				position: relative;
+			}
+			.cover img{
+				width: 100%;
+				height: 100%;
+			}
+			.info{
+				padding-top: 1.2rem;
+				overflow: hidden;
+			}
+			.info .title{
+				margin-bottom:5px;
+				font-weight: normal;
+				color: rgba(0,0,0,.8);
+				font-size: 16px;
+
+				text-overflow: ellipsis;
+				word-spacing: nowrap;
+				overflow: hidden;
+			}
+			.info .summary{
+				margin-top: 15px;
+				margin-bottom: 10px;
+				font: 10px/18px a;
+				color: rgba(0,0,0,.4);
+
+				text-overflow: ellipsis;
+				word-spacing: nowrap;
+				overflow: hidden;
+
+				display: -webkit-box;
+				-webkit-box-orient:vertical;
+				-webkit-line-clamp:2;
+
+			}
+
+			.info .wrap{
+			
+			}
+
+			.info .wrap .tag{
+				float: right;
+				font-size:10px;
+				line-height: 16px;
+				padding: 3px 5px;
+				color: rgba(0,0,0,.6);
+				background-color: #fff;
+				-webkit-transform:scale(.9);
+			}
+			.info .author{
+				margin-top: 5px;
+				font:12px/16px a;
+				color: rgba(0,0,0,.4);
+			}
+		</style>
+		<title>男生频道</title>
+	</head>
+	<body>
+		<div id="app" style="width:734px;overflow:hidden;">
+			<% include include/common-header.html %>
+			<div class="container-scroll" style="734px">
+				<div class="book-page" v-for="item in items">
+					<div class="header">{{item.ad_name}}</div>
+					<ul>
+						<li v-for='data in item.data.data'>
+							<div class="book">
+								<div class="cover">
+									<img v-bind:src="data.cover" alt="">
+								</div>
+								<div class="info">
+									<h3 class="title">{{data.title}}</h3>
+									<p class="summary">{{data.summary}}</p>
+									<div class="wrap">
+									    <div class="tag" v-for="tag in data.tags">{{tag}}</div>
+										<div class="author">{{data.authors}}</div>
+
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					
+				</div>	
+			</div>			
+		</div>
+	</body>
+	<div>
+	<script src="/static/script/vue.js"></script>
+	<script src="/static/script/zepto.min.js"></script>
+	<script src="/static/script/pages/male.js"></script>
+	</div>

@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<mate name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="/static/css/reset.css">
+		<style>
+			body,html{
+				font-size: 12px;
+			}
+			.container-scroll{
+				position: relative;
+				height: 100%;
+				overflow-y: scroll;
+			}
+			.unit{
+				padding: 10px 20px;
+				overflow: hidden;
+				border-bottom: 1px solid #f1f1f1;
+			}
+			.cover{
+				width: 90px;
+				height: 90px;
+				float: left;
+				margin-right: 15px;
+			}
+			.cover img{
+				width: 100%;
+				height: 100%;
+			}
+			a{
+				text-decoration: none;
+				color: rgba(0,0,0,.7);
+			}
+			.info{
+				padding-top: 5px;
+				font:14px/26px a;
+				color: rgba(0,0,0,.7);
+			}
+			.info .order{
+				float: left;
+				margin-right: 10px;
+				color: rgba(0,0,0,.5);
+			}
+		</style>
+		<title>分类</title>
+	</head>
+	<body>
+		<div id="app" style="width:734px;overflow:hidden;">
+			<% include include/common-header.html %>
+			<div class="container-scroll" style="734px">
+				<div class="unit-page">
+					<ul>
+						<li class="unit" v-for="item in items" v-if="$index>18">
+							<div class="cover">
+								<img v-bind:src="item.cover" alt="">
+							</div>
+							<div class="info">
+								<ul>
+									<li v-for="item in item.description.split('\n')">
+										<a href="book?id=(item.click.split('\n')[$index]||'')">
+											<span class="order">{{$index+1}}</span>
+											<div class="title">{{item}}</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>			
+		</div>
+	</body>
+	<div>
+	<script src="/static/script/vue.js"></script>
+	<script src="/static/script/zepto.min.js"></script>
+	<script src="/static/script/pages/rank.js"></script>
+	</div>

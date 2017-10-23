@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<mate name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="/static/css/reset.css">
+		<link rel="stylesheet" href="/static/css/all.css">
+		<title>书城首页</title>
+	</head>
+	<body>
+		<div id="app">
+			<% include include/header.html %>
+			<div style="width: {{d_width}}px;transition-duration: .5s;transform: translate3d({{position}}px,0px,0px);">
+				<div style="width:{{w_width}}px;float: left;" class="container-warp" >
+					<div class="container-scroll" style="top:0">
+						<% include include/index-top.html %>
+						<% include include/index-hot.html %>
+						<% include include/index-recommend.html %>
+						<% include include/index-female.html %>
+						<% include include/index-male.html %>
+						<% include include/index-free.html %>
+						<% include include/index-bottom.html %>
+					</div>
+				</div>
+				<div style="width:{{w_width}}px;float: left;">
+					<% include include/index-shelf.html %>
+				</div>
+			</div>
+		</div>
+	</body>
+	<div>
+	<script src="/static/script/vue.js"></script>
+	<script src="/static/script/zepto.min.js"></script>
+	<script src="/static/script/pages/index.js"></script>
+	</div>

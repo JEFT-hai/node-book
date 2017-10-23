@@ -1,0 +1,229 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<mate name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="/static/css/reset.css">
+		<style>
+			body,html{
+				font-size: 12px;
+			}
+			.container-wrap{
+				position: relative;
+				overflow: hidden;
+				height: 100%;
+			}
+			.container-scroll{
+				position: absolute;
+				top: 45px;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			.search{
+				background: #efeff0;
+				position: relative;
+				border-top: 1px solid #efeff0;
+				height: 100%;
+				overflow: hidden;
+			}
+			.search .top{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+			.back{
+				width: 44px;
+				height: 44px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: url(/static/img/back.png) no-repeat center;
+				background-size: 10px 15px;
+				margin-right: 10px;
+			}
+			.search-box{
+				margin: 5px 20px 5px 44px;
+				height: 35px;
+				position: relative;
+				box-sizing: border-box;
+				border-bottom: 1px solid #ccc;
+			}
+			.search-icon{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 35px;
+				height: 34px;
+				border-right: 1px solid #e0e0e0;
+				background: url(http://image.read.duokan.com/mfsv2/download/s010/p01TjruXIhgt/PP13pEqhpChuay.png) no-repeat center;
+				background-size: 15px;
+			}
+			.input{
+				height: 100%;
+				width: 100%;
+				border:1px solid #e0e0e0;
+				box-sizing: border-box;
+				padding-left: 40px;
+			}
+			.go{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 35px;
+				height: 34px;
+				border-left: 1px solid #e0e0e0;
+				text-align: center;
+				line-height: 34px;
+				padding: 0 8px;
+				font-size: 14px;
+				color: rgba(0,0,0,.6);
+			}
+			.top-tags{
+				position: absolute;
+				top: 45px;
+				padding-top:10px;
+				background: #fff;
+			}
+			.top-tags ul li:nth-child(2n+1){
+				background: #f0f3f4;
+			}
+			.top-tags ul li:nth-child(2n+2){
+				background: #f0d0d0;
+			}
+			.top-tags .u-tag{
+				width: auto;
+				font:15px/20px a;
+				padding: 3px 15px;
+				float: left;
+				border: 1px solid #c0c0c0;
+				border-radius: 3px;
+				margin:6px 15px;
+				color: rgba(0,0,0,.5);
+			}
+			.top__bd{
+				position: absolute;
+				top: 45px;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				overflow: auto;
+				background: #fff;
+			}
+			.top__bd ul li{
+				padding: 20px;
+				overflow: hidden;
+			}
+			.top__bd .cover{
+				float: left;
+				width: 8.5rem;
+				height: 11.3rem;
+				margin-right: 10px;
+				box-shadow: 0 6px 5px -3px #aaa;
+			}
+			.top__bd .cover img{
+				width: 100%;
+				height: 100%;
+			}
+			.top__bd .info{
+				padding-top:1.2rem;
+			}
+			.top__bd .info .title{
+				font:18px/36px a;
+				color: rgba(0,0,0,.8);
+
+				text-overflow: ellipsis;
+				word-spacing:nowrap;
+				overflow: hidden;
+			}
+			.top__bd .info .summary{
+				color: rgba(0,0,0,.5);
+				line-height: 18px;
+
+				text-overflow: ellipsis;
+				word-spacing:nowrap;
+				overflow: hidden;
+
+				display: -webkit-box;
+				-webkit-box-orient:vertical;
+				-webkit-line-clamp:2;
+			}
+			.top__bd .empty{
+				width: 100%;
+				text-align: center;
+				margin: 15px auto;
+				font:16px/28px a;
+				color: rgba(0,0,0,.6);
+
+			}
+		</style>
+		<title>分类</title>
+	</head>
+	<body>
+		<div id="app" style="width:734px; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);" >
+			<div class="container-wrap">
+				<% include include/common-header.html %>
+				<div class="container-scroll" style="width:734px;transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+					<div class="search" id="search">
+						<div class="top">
+							<a class="back" href="javascript:history.back()"></a>
+							<div class="search-box">
+								<div class="search-icon"></div>
+								<input id="search_box" value="" class="input" type="text" placeholder="输入书名/作者/关键字" >
+								<div class="go" v-on:click="doSearch()">搜索</div>
+							</div>
+						</div>
+						<div class="top-tags" v-show="condition">
+							<ul>
+								<li class="u-tag" id="Tag__128">我的绝美女神老婆</li>
+								<li class="u-tag" id="Tag__129">复仇千金</li>
+								<li class="u-tag" id="Tag__130">盗墓</li>
+								<li class="u-tag" id="Tag__131">豪门小老婆</li>
+								<li class="u-tag" id="Tag__132">庶女</li>
+								<li class="u-tag" id="Tag__133">神医</li>
+								<li class="u-tag" id="Tag__134">魔兽</li>
+								<li class="u-tag" id="Tag__135">我的老婆是双胞胎</li>
+							</ul>
+						</div>
+						<div class="top__bd" v-show="!condition">
+											<ul class="book-list">
+												<li v-for="item in search">
+													<div class="u-book">
+														<div class="cnt">
+															<div class="cover">
+																<img alt="{{ item.title }}" v-bind:src="item.cover">
+																<div class="u-tagRT"></div>
+															</div>
+															<div class="info">
+																<h3 class="title single-line">{{ item.title }}</h3>
+																<p class="summary">{{ item.intro }}</p>
+																<div class="wrap">
+																	<p class="author single-line">
+																		<span>{{ item.authors }}</span>
+																	</p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+											<div class="ListView ListView_complete" v-show="empty">
+												<div class="empty">
+													<p class="u-tip">没有相应的搜索结果</p>
+												</div>
+												<div class="ListView__complete"></div>
+											</div>
+						</div>
+														
+					</div>
+			
+				</div>
+			</div>		
+		</div>
+	</body>
+	<div>
+	<script src="/static/script/vue.js"></script>
+	<script src="/static/script/zepto.min.js"></script>
+	<script src="/static/script/pages/search.js"></script>
+	</div>

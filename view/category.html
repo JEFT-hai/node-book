@@ -1,0 +1,106 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<mate name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="stylesheet" href="/static/css/reset.css">
+		<style>
+			body,html{
+				font-size: 12px;
+			}
+			.container-scroll{
+				position: relative;
+				height: 100%;
+				overflow-y: scroll;
+			}
+			.header{
+				padding-left: 35px;
+				padding-top: 15px;
+				border-bottom:1px solid #eee;
+				font:15px/40px a;
+				margin-top: 10px;
+				color: rgba(0,0,0,.5);
+				overflow: hidden;
+			}
+			ul{
+				padding:0 10px;
+			}
+			ul li{
+				float: left;
+				width:49%;
+				margin:2% 0 0;
+			}
+			ul li:nth-child(2n+1){
+				margin-right: 2%;
+			}
+			.wrap{
+				height: 66px;
+				padding: 21px 6px 0;
+				width: 100%;
+				color: #515151;
+				background-position: right bottom;
+				background-size: 100%;
+				background-repeat: no-repeat;
+				box-sizing: border-box;
+				border-radius: 3px;
+			}
+			.title{
+				font:13px/16px a;
+				font-weight: 600;
+				color: rgba(0,0,0,.7);
+			}
+			.count{
+				font:12px/12px;
+				color: rgba(0,0,0,.4);
+			}
+		</style>
+		<title>分类</title>
+	</head>
+	<body>
+		<div id="app" style="width:734px;overflow:hidden;">
+			<% include include/common-header.html %>
+			<div class="container-scroll" style="734px">
+				<div class="book-page">
+					<div class="header">杂志分类</div>
+					<ul>
+						<li v-for="item in magazine">
+							<div class="wrap" style="background-image: url({{item.image}}!m);">
+								<h3 class="title">{{item.label}}</h3>
+								<p class="count">{{item.fiction_count||item.count}}</p>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+				<div class="book-page">
+					<div class="header">网文男频</div>
+					<ul>
+						<li v-for="item in male">
+							<div class="wrap" style="background-image:url({{item.new_image}}!m);">
+								<h3 class="title">{{item.label}}</h3>
+								<p class="count">{{item.fiction_count||item.count}}</p>
+							</div>
+						</li>
+					</ul>
+					
+				</div>			
+				<div class="book-page">
+					<div class="header">网文女频</div>
+					<ul>
+						<li v-for="item in female">
+							<div class="wrap" style="background-image:url({{item.new_image}}!m);">
+								<h3 class="title">{{item.label}}</h3>
+								<p class="count">{{item.fiction_count||item.count}}</p>
+							</div>
+						</li>
+					</ul>
+					
+				</div>	
+			</div>			
+		</div>
+	</body>
+	<div>
+	<script src="/static/script/vue.js"></script>
+	<script src="/static/script/zepto.min.js"></script>
+	<script src="/static/script/pages/category.js"></script>
+	</div>
